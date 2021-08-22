@@ -51,6 +51,21 @@ document.addEventListener('scroll', function(){
     }
     if(currentScrollValue > 4000){
         blue_box.classList.add('event');
+        let current = 0;
+
+        const changeNum = (dom) => dom.innerText = (current = current + 15200) ;
+
+        const SetInterval = (cb, ms) => setInterval(() => {
+            if(current >= 7099184) return clearInterval(SetInterval);
+            cb();
+        }, ms)
+
+        const MS = 1;
+        const domRoot = document.querySelector('.number_event');
+        domRoot.innerText = 0;
+        // SetInterval 함수를 실행. 1. 숫자를 증가시킨다. 2.changeNum(15200씩 증가)한다. 3. .number_event부분을 MS의 속도만큳
+        SetInterval(changeNum.bind(null, domRoot), MS);
     }
 })
 
+// 숫자 이벤트
